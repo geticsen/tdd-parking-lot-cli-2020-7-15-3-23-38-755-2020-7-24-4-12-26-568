@@ -1,0 +1,25 @@
+package com.oocl.cultivation.test;
+
+import com.oocl.cultivation.Car;
+import com.oocl.cultivation.ParkingBoy;
+import com.oocl.cultivation.ParkingCarTicket;
+import com.oocl.cultivation.ParkingLot;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+
+public class ParkingBoyTest {
+    @Test
+    void should_return_ticket_when_parking_boy_park_car_given_car(){
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+        //when
+        ParkingCarTicket parkingCarTicket= parkingBoy.park(car);
+        //then
+        assertNotNull(parkingCarTicket);
+    }
+}
