@@ -78,7 +78,7 @@ public class ParkingBoyTest {
         ParkingCarTicket parkingCarTicket2 = parkingBoy.park(car2);
         ParkingCarTicket parkingCarTicket3 = parkingBoy.park(car3);
         fetchCar1 = parkingBoy.fetchCarByParkingTicket(parkingCarTicket);
-        fetchCar2 = parkingBoy.fetchCarByParkingTicket();
+        fetchCar2 = parkingBoy.fetchCarByParkingTicket(null);
         //then
         Assertions.assertEquals(null, fetchCar1);
         Assertions.assertEquals(null, fetchCar2);
@@ -134,6 +134,23 @@ public class ParkingBoyTest {
         fetchCar = parkingBoy.fetchCarByParkingTicket(parkingCarTicket);
         //then
         Assertions.assertEquals("Unrecognized parking ticket.", fetchCar);
+    }
+    @Test
+    void should_return_wrong_message_when_fetch_car_given_none(){
+        //Please provide your parking ticket.
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+        ParkingCarTicket parkingCarTicket;
+        String wrongMessage;
+
+        //when
+        parkingCarTicket = parkingBoy.park(car);
+        wrongMessage = parkingBoy.fetchCarByParkingTicket();
+
+        //then
+        Assertions.assertEquals("Please provide your parking ticket.", wrongMessage);
     }
 
 }
