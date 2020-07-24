@@ -33,7 +33,7 @@ public class ParkingBoyTest {
         Car fetchCar;
         //when
         ParkingCarTicket parkingCarTicket= parkingBoy.park(car);
-        fetchCar = parkingBoy.fetchCarByParkingTicket();
+        fetchCar = parkingBoy.fetchCarByParkingTicket(parkingCarTicket);
         //then
         Assertions.assertEquals(car,fetchCar);
     }
