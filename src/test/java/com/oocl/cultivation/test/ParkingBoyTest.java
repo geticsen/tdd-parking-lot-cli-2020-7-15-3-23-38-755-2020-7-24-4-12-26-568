@@ -60,4 +60,26 @@ public class ParkingBoyTest {
         //then
         Assertions.assertEquals(car2, fetchCar);
     }
+    @Test
+    void should_return_null_when_fetch_car_given_wrong_or_not_take_parking_car_ticket(){
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
+        ParkingCarTicket parkingCarTicket =new ParkingCarTicket();
+        Car fetchCar1;
+        Car fetchCar2;
+
+        //when
+        ParkingCarTicket parkingCarTicket1 = parkingBoy.park(car1);
+        ParkingCarTicket parkingCarTicket2 = parkingBoy.park(car2);
+        ParkingCarTicket parkingCarTicket3 = parkingBoy.park(car3);
+        fetchCar1 = parkingBoy.fetchCarByParkingTicket(parkingCarTicket);
+        fetchCar2 = parkingBoy.fetchCarByParkingTicket();
+        //then
+        Assertions.assertEquals(null, fetchCar1);
+        Assertions.assertEquals(null, fetchCar2);
+    }
 }
