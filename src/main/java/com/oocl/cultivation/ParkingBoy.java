@@ -4,19 +4,26 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParkingBoy {
-    private Map<ParkingCarTicket, Car> parkingCarList = new HashMap<ParkingCarTicket, Car>();
+
+    private ParkingLot parkingLot;
 
     public ParkingBoy(ParkingLot parkingLot) {
+        this.parkingLot = parkingLot;
     }
 
     public ParkingCarTicket park(Car car) {
-
-        ParkingCarTicket parkingCarTicket = new ParkingCarTicket();
-        this.parkingCarList.put(parkingCarTicket, car);
-        return parkingCarTicket;
+        if (parkingLot.isParkingLotFull() || car == null) {
+            return null;
+        } else {
+            return parkingLot.storeCar(car);
+        }
     }
 
     public Car fetchCarByParkingTicket(ParkingCarTicket parkingCarTicket) {
-        return this.parkingCarList.get(parkingCarTicket);
+        return parkingLot.fethCar(parkingCarTicket);
+    }
+
+    public Car fetchCarByParkingTicket() {
+        return null;
     }
 }
