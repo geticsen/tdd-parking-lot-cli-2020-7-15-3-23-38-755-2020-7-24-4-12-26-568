@@ -89,12 +89,26 @@ public class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();
         ParkingCarTicket parkingCarTicket;
-        Car fetchCar;
+        Car fetchCar,fetchCar0;
         //when
         parkingCarTicket = parkingBoy.park(car);
-        fetchCar = parkingBoy.fetchCarByParkingTicket(parkingCarTicket);
+        fetchCar0 = parkingBoy.fetchCarByParkingTicket(parkingCarTicket);
         fetchCar = parkingBoy.fetchCarByParkingTicket(parkingCarTicket);
         //then
         Assertions.assertEquals(null, fetchCar);
+    }
+    @Test
+    void should_return_null_when_parking_car_given_car_over_10(){
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        ParkingCarTicket parkingCarTicket = new ParkingCarTicket();
+        //when
+        for(int i=1;i<=11;i++){
+            Car car = new Car();
+            parkingCarTicket = parkingBoy.park(car);
+        }
+        //then
+        Assertions.assertEquals(null, parkingCarTicket);
     }
 }
