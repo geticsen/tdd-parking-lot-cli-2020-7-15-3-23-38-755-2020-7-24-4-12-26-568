@@ -29,16 +29,14 @@ public class ParkingLot {
         this.capacity = 10;
     }
 
-    public int getAllCapacity() {
-        return capacity;
-    }
-
-    public void setAllCapacity(int allCapacity) {
-        this.capacity = allCapacity;
-    }
-
     public boolean isParkingLotFull() {
         return parkingCarList.size() >= capacity;
     }
+    public boolean isCarInParkingLot(ParkingCarTicket parkingCarTicket){
+        return parkingCarList.get(parkingCarTicket)==null?false:true;
+    }
 
+    public double availableRate() {
+        return (capacity - parkingCarList.size())/(double) capacity;
+    }
 }
