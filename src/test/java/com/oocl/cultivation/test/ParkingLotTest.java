@@ -38,7 +38,7 @@ public class ParkingLotTest {
         Assertions.assertEquals(car, carFetch);
     }
     @Test
-    void should_return_fifty_percent_when_get_avilable_rate_given_five_car() {
+    void should_return_fifty_percent_when_get_available_rate_given_five_car() {
         //given
 
         ParkingLot parkingLot = new ParkingLot();
@@ -50,5 +50,18 @@ public class ParkingLotTest {
 
         //then
         Assertions.assertEquals(1/(double)2, parkingLot.availableRate());
+    }
+    @Test
+    void should_reurn_5_when_get_avaliable_capacity_given_five_car(){
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+
+        //when
+        for (int i=0;i<5;i++){
+            parkingLot.storeCar(new Car());
+        }
+
+        //then
+        Assertions.assertEquals(5, parkingLot.availableCapacity());
     }
 }
