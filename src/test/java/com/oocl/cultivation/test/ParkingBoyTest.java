@@ -7,6 +7,9 @@ import com.oocl.cultivation.ParkingLot;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
@@ -169,6 +172,25 @@ public class ParkingBoyTest {
         wrongMessage = parkingBoy.attemptPark(car);
         //then
         Assertions.assertEquals("Not enough position.", wrongMessage);
+    }
+    @Test
+    void should_return_right_parking_lot_when_parking_boy_has_over_1_parking_lot_given_parking_car_ticket(){
+        //given
+        List<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
+        parkingLots.add(new ParkingLot());
+        parkingLots.add(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        //when
+
+        for (int i=0;i<10;i++){
+            parkingBoy.park(new Car());
+        }
+        Car myCar = new Car();
+        ParkingCarTicket parkingCarTicket = parkingBoy.park(myCar);
+        ParkingLot parkingLot = parkingBoy.findParkingLotByParkingCarTicket(parkingCarTicket);
+        //then
+        Assertions.assertEquals(parkingLots.get(1),parkingLot);
+
     }
 
 }
