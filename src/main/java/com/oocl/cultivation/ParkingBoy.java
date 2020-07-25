@@ -20,7 +20,11 @@ public class ParkingBoy {
     }
 
     public Car fetchCarByParkingTicket(ParkingCarTicket parkingCarTicket) {
-        return parkingLot.fethCar(parkingCarTicket);
+        Car car = parkingLot.fethCar(parkingCarTicket);
+        if (car==null){
+            parkingCarTicket.setTicketMessage("Unrecognized parking ticket.");
+        }
+        return car;
     }
 
     public String fetchCarByParkingTicket() {
