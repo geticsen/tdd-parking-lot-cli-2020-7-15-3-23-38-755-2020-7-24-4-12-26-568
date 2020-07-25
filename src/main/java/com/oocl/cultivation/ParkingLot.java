@@ -35,7 +35,9 @@ public class ParkingLot {
     public boolean isCarInParkingLot(ParkingCarTicket parkingCarTicket){
         return parkingCarList.get(parkingCarTicket)==null?false:true;
     }
-
+    public int availableCapacity(){
+        return capacity -parkingCarList.size();
+    }
     public double availableRate() {
         return (capacity - parkingCarList.size())/(double) capacity;
     }
