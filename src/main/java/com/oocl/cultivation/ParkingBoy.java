@@ -23,7 +23,7 @@ public class ParkingBoy {
         return parkingLot.fethCar(parkingCarTicket);
     }
 
-    public Car fetchCarByParkingTicket() {
-        return null;
+    public String fetchCarByParkingTicket() {
+        return "Please provide your parking ticket.";
     }
 }
