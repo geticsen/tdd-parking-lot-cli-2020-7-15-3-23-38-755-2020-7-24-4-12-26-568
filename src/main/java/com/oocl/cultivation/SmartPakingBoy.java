@@ -13,12 +13,12 @@ public class SmartPakingBoy extends ParkingBoy {
 
     @Override
     public String attemptPark(Car car) {
-        double maxAvilableRate = 0;
+        int maxAvilable = 0;
         int parkingLotIndex = -1;
         for (int i = 0; i < this.getParkingLots().size(); i++) {
             if (!this.getParkingLots().get(i).isParkingLotFull()) {
-                if (this.getParkingLots().get(i).availableRate()>maxAvilableRate){
-                    maxAvilableRate = this.getParkingLots().get(i).availableRate();
+                if (this.getParkingLots().get(i).availableRate()>maxAvilable){
+                    maxAvilable = this.getParkingLots().get(i).availableCapacity();
                     parkingLotIndex = i;
                 }
             }

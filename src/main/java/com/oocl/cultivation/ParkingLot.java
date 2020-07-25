@@ -28,6 +28,9 @@ public class ParkingLot {
     public ParkingLot() {
         this.capacity = 10;
     }
+    public ParkingLot(int capacity) {
+        this.capacity =capacity;
+    }
 
     public boolean isParkingLotFull() {
         return parkingCarList.size() >= capacity;
