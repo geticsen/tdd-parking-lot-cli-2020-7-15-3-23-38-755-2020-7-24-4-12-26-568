@@ -12,7 +12,7 @@ public class ParkingBoy {
     }
 
     public ParkingCarTicket park(Car car) {
-        if (parkingLot.isParkingLotFull() || car == null) {
+        if (attemptPark(car).equals("") || car == null) {
             return null;
         } else {
             return parkingLot.storeCar(car);
@@ -29,5 +29,9 @@ public class ParkingBoy {
 
     public String fetchCarByParkingTicket() {
         return "Please provide your parking ticket.";
+    }
+
+    public String attemptPark(Car car) {
+        return parkingLot.isParkingLotFull()?"Not enough position.":"";
     }
 }
