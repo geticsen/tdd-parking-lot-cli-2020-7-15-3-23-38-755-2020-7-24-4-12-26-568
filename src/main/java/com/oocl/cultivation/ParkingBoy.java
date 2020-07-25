@@ -1,28 +1,40 @@
 package com.oocl.cultivation;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ParkingBoy {
 
-    private ParkingLot parkingLot;
+    private List<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
 
     public ParkingBoy(ParkingLot parkingLot) {
-        this.parkingLot = parkingLot;
+        this.parkingLots.add(parkingLot);
+    }
+
+    public ParkingBoy(List<ParkingLot> parkingLot) {
+        this.parkingLots = parkingLot;
     }
 
     public ParkingCarTicket park(Car car) {
-        if (attemptPark(car).equals("") || car == null) {
-            return null;
+        String attempt = attemptPark(car);
+        if (!attempt.equals("Not enough position.") || car == null) {
+            return parkingLots.get(Integer.parseInt(attempt)).storeCar(car);
         } else {
-            return parkingLot.storeCar(car);
+            return null;
         }
     }
 
     public Car fetchCarByParkingTicket(ParkingCarTicket parkingCarTicket) {
-        Car car = parkingLot.fethCar(parkingCarTicket);
-        if (car==null){
-            parkingCarTicket.setTicketMessage("Unrecognized parking ticket.");
+        ParkingLot parkingLot = findParkingLotByParkingCarTicket(parkingCarTicket);
+        Car car = null;
+        if (parkingLot != null) {
+            car = parkingLot.fethCar(parkingCarTicket);
+        } else {
+            if (null != parkingCarTicket) {
+                parkingCarTicket.setTicketMessage("Unrecognized parking ticket.");
+            }
         }
         return car;
     }
@@ -32,6 +44,25 @@ public class ParkingBoy {
     }
 
     public String attemptPark(Car car) {
-        return parkingLot.isParkingLotFull()?"Not enough position.":"";
+        int firstHaveCapacityParkingLot = -1;
+        for (int i = 0; i < parkingLots.size(); i++) {
+            if (!parkingLots.get(i).isParkingLotFull()) {
+                firstHaveCapacityParkingLot = i;
+                break;
+            }
+        }
+        boolean isValid = firstHaveCapacityParkingLot != -1;
+        return isValid ? String.valueOf(firstHaveCapacityParkingLot) : "Not enough position.";
+
     }
+
+    public ParkingLot findParkingLotByParkingCarTicket(ParkingCarTicket parkingCarTicket) {
+        for (int i = 0; i < parkingLots.size(); i++) {
+            if (parkingLots.get(i).isCarInParkingLot(parkingCarTicket)) {
+                return parkingLots.get(i);
+            }
+        }
+        return null;
+    }
+
 }
