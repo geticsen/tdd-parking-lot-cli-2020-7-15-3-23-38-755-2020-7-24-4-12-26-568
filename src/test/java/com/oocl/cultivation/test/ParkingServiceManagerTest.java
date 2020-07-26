@@ -76,5 +76,24 @@ public class ParkingServiceManagerTest {
         //then
         Assertions.assertEquals(car, fetchCar);
     }
+    @Test
+    void should_return_wrong_message_when_manager_specify_boy_fetch_car_given_wrong_ticket() {
+        //given
+        ParkingServiceManager parkingServiceManager = new ParkingServiceManager();
+        ParkingLot parkingLot = new ParkingLot(1, parkingServiceManager);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+        Car car1 = new Car();
+        ParkingCarTicket parkingCarTicket;
+        Car fetchCar;
+
+        //when
+        parkingServiceManager.addManageParkingBoy(parkingBoy);
+        parkingCarTicket = parkingServiceManager.specifyParkingBoy(parkingBoy).park(car);
+        parkingCarTicket = parkingServiceManager.specifyParkingBoy(parkingBoy).park(car1);
+
+        //then
+        Assertions.assertEquals("Unrecognized parking ticket.", parkingCarTicket.getTicketMessage());
+    }
 
 }
