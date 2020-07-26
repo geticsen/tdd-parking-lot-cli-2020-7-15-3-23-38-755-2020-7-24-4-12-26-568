@@ -9,6 +9,10 @@ public class ParkingBoy {
 
     private List<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
 
+    public ParkingBoy(){
+
+    }
+
     public ParkingBoy(ParkingLot parkingLot) {
         this.parkingLots.add(parkingLot);
     }

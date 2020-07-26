@@ -17,7 +17,7 @@ public class SmartPakingBoy extends ParkingBoy {
         int parkingLotIndex = -1;
         for (int i = 0; i < this.getParkingLots().size(); i++) {
             if (!this.getParkingLots().get(i).isParkingLotFull()) {
-                if (this.getParkingLots().get(i).availableRate()>maxAvilable){
+                if (this.getParkingLots().get(i).availableCapacity()>maxAvilable){
                     maxAvilable = this.getParkingLots().get(i).availableCapacity();
                     parkingLotIndex = i;
                 }
