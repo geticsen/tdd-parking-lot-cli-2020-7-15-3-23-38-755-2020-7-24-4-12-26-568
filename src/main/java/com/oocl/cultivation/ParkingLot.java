@@ -13,6 +13,14 @@ public class ParkingLot {
         this.parkingServiceManager = parkingServiceManager;
     }
 
+    public ParkingLot() {
+        this.capacity = 10;
+    }
+
+    public ParkingLot(int capacity) {
+        this.capacity =capacity;
+    }
+
     public Map<ParkingCarTicket, Car> getParkingCarList() {
         return parkingCarList;
     }
@@ -31,18 +39,11 @@ public class ParkingLot {
         this.parkingCarList = parkingCarList;
     }
 
-    public ParkingLot() {
-        this.capacity = 10;
-    }
-    public ParkingLot(int capacity) {
-        this.capacity =capacity;
-    }
-
     public boolean isParkingLotFull() {
         return parkingCarList.size() >= capacity;
     }
     public boolean isCarInParkingLot(ParkingCarTicket parkingCarTicket){
-        return parkingCarList.get(parkingCarTicket)==null?false:true;
+        return parkingCarList.get(parkingCarTicket) != null;
     }
     public int availableCapacity(){
         return capacity -parkingCarList.size();

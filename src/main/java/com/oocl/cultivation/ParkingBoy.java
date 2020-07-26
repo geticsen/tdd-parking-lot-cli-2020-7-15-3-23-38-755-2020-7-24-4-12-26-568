@@ -67,9 +67,9 @@ public class ParkingBoy {
     }
 
     public ParkingLot findParkingLotByParkingCarTicket(ParkingCarTicket parkingCarTicket) {
-        for (int i = 0; i < parkingLots.size(); i++) {
-            if (parkingLots.get(i).isCarInParkingLot(parkingCarTicket)) {
-                return parkingLots.get(i);
+        for (ParkingLot parkingLot : parkingLots) {
+            if (parkingLot.isCarInParkingLot(parkingCarTicket)) {
+                return parkingLot;
             }
         }
         return null;
