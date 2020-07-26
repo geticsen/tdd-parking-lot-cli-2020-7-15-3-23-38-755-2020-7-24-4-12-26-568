@@ -14,9 +14,9 @@ public class SmartPakingBoyTest extends ParkingBoyTest{
     @Test
     void should_return_most_suitable_parking_lot_when_smart_parking_boy_parking_car_given_car(){
         //given
-        ParkingLot parkingLot1 =new ParkingLot();
-        ParkingLot parkingLot2 =new ParkingLot();
-        ParkingLot parkingLot3 =new ParkingLot();
+        ParkingLot parkingLot1 =new ParkingLot(10);
+        ParkingLot parkingLot2 =new ParkingLot(10);
+        ParkingLot parkingLot3 =new ParkingLot(10);
 
         parkingLot1.storeCar(new Car());
         parkingLot1.storeCar(new Car());
