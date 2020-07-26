@@ -10,11 +10,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class ParkingServiceManagerTest {
     @Test
-    void should_return_parking_car_ticket_when_manager_specify_parking_boy_parking_car_given_car(){
+    void should_return_parking_car_ticket_when_manager_specify_parking_boy_parking_car_given_car() {
         //given
         ParkingServiceManager parkingServiceManager = new ParkingServiceManager();
-        ParkingLot parkingLot =new ParkingLot(10,parkingServiceManager);
-        ParkingBoy parkingBoy =new ParkingBoy(parkingLot);
+        ParkingLot parkingLot = new ParkingLot(10, parkingServiceManager);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();
         ParkingCarTicket parkingCarTicket;
 
@@ -26,12 +26,13 @@ public class ParkingServiceManagerTest {
         //then
         assertNotNull(parkingCarTicket);
     }
+
     @Test
-    void should_return_car_when_manager_specify_parking_boy_fetch_car_given_parking_car_ticket(){
+    void should_return_car_when_manager_specify_parking_boy_fetch_car_given_parking_car_ticket() {
         //given
         ParkingServiceManager parkingServiceManager = new ParkingServiceManager();
-        ParkingLot parkingLot =new ParkingLot(10,parkingServiceManager);
-        ParkingBoy parkingBoy =new ParkingBoy(parkingLot);
+        ParkingLot parkingLot = new ParkingLot(10, parkingServiceManager);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();
         ParkingCarTicket parkingCarTicket;
         Car fetchCar;
@@ -41,21 +42,39 @@ public class ParkingServiceManagerTest {
         parkingCarTicket = parkingServiceManager.specifyParkingBoy(parkingBoy).park(car);
         fetchCar = parkingServiceManager.specifyParkingBoy(parkingBoy).fetchCarByParkingTicket(parkingCarTicket);
         //then
-        Assertions.assertEquals(car,fetchCar);
+        Assertions.assertEquals(car, fetchCar);
     }
+
     @Test
-    void should_return_parking_car_ticket_when_manager_parking_car_given_car(){
+    void should_return_parking_car_ticket_when_manager_parking_car_given_car() {
         //given
-        ParkingLot parkingLot =new ParkingLot();
+        ParkingLot parkingLot = new ParkingLot();
         ParkingServiceManager parkingServiceManager = new ParkingServiceManager(parkingLot);
         ParkingCarTicket parkingCarTicket;
-        Car  car=new Car();
+        Car car = new Car();
 
         //when
         parkingCarTicket = parkingServiceManager.park(car);
 
         //then
         assertNotNull(parkingCarTicket);
+    }
+
+    @Test
+    void should_car_when_fetch_car_given_parking_car_ticket() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingServiceManager parkingServiceManager = new ParkingServiceManager(parkingLot);
+        ParkingCarTicket parkingCarTicket;
+        Car car = new Car();
+        Car fetchCar;
+
+        //when
+        parkingCarTicket = parkingServiceManager.park(car);
+        fetchCar = parkingServiceManager.fetchCarByParkingTicket(parkingCarTicket);
+
+        //then
+        Assertions.assertEquals(car, fetchCar);
     }
 
 }
