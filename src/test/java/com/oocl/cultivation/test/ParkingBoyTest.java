@@ -157,7 +157,7 @@ public class ParkingBoyTest {
     }
 
     @Test
-    void should_return_not_enough_position_when_parking_boy_attempt_parking_car_without_position_given_car() {
+    void should_return_null_when_parking_boy_attempt_parking_car_without_position_given_car() {
         //given
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
@@ -169,9 +169,9 @@ public class ParkingBoyTest {
         for (int i=0; i<10;i++){
             parkingBoy.park(car);
         }
-        wrongMessage = parkingBoy.getAvailableParkingLotIndex(car);
+        ParkingLot parkingLot1 = parkingBoy.getAvailableParkingLot();
         //then
-        Assertions.assertEquals("Not enough position.", wrongMessage);
+        Assertions.assertEquals(null, parkingLot1);
     }
     @Test
     void should_return_right_parking_lot_when_parking_boy_has_over_1_parking_lot_given_parking_car_ticket(){
