@@ -34,7 +34,7 @@ public class ParkingBoy {
         }
     }
 
-    public Car fetchCarByParkingTicket(ParkingCarTicket parkingCarTicket) {
+    public Car fetchCar(ParkingCarTicket parkingCarTicket) {
         ParkingLot parkingLot = findParkingLotByParkingCarTicket(parkingCarTicket);
         Car car = null;
         if (parkingLot != null) {
@@ -47,7 +47,7 @@ public class ParkingBoy {
         return car;
     }
 
-    public String fetchCarByParkingTicket() {
+    public String fetchCar() {
         return "Please provide your parking ticket.";
     }
 
