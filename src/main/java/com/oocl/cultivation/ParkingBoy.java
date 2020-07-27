@@ -9,7 +9,7 @@ public class ParkingBoy {
 
     private List<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
 
-    public ParkingBoy(){
+    public ParkingBoy() {
 
     }
 
@@ -20,13 +20,11 @@ public class ParkingBoy {
     public ParkingBoy(List<ParkingLot> parkingLot) {
         this.parkingLots = parkingLot;
     }
+
     public List<ParkingLot> getParkingLots() {
         return parkingLots;
     }
 
-    public void setParkingLots(List<ParkingLot> parkingLots) {
-        this.parkingLots = parkingLots;
-    }
     public ParkingCarTicket park(Car car) {
         String attempt = attemptPark(car);
         if (!attempt.equals("Not enough position.") || car == null) {
