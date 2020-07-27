@@ -1,9 +1,11 @@
 package com.oocl.cultivation;
 
+import com.oocl.cultivation.strategy.ParkingStategy;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParkingBoy {
+public class ParkingBoy implements ParkingStategy {
 
     private static final String NOT_ENOUGH_POSITION = "Not enough position.";
     private static final String UNRECOGNIZED_PARKING_TICKET = "Unrecognized parking ticket.";
@@ -27,8 +29,8 @@ public class ParkingBoy {
     }
 
     public ParkingCarTicket park(Car car) {
-        ParkingLot parkingLot  = getAvailableParkingLot();
-        if (parkingLot!=null || car != null) {
+        ParkingLot parkingLot = getAvailableParkingLot();
+        if (parkingLot != null) {
             return parkingLot.storeCar(car);
         } else {
             return null;
@@ -55,8 +57,8 @@ public class ParkingBoy {
     public ParkingLot getAvailableParkingLot() {
         ParkingLot parkingLot;
         try {
-            parkingLot = this.getParkingLots().stream().filter(e->e.isParkingLotFull()).findFirst().get();
-        }catch (Exception e){
+            parkingLot = this.getParkingLots().stream().filter(e -> e.isParkingLotFull()).findFirst().get();
+        } catch (Exception e) {
             parkingLot = null;
         }
         return parkingLot;
