@@ -11,19 +11,17 @@ public class SmartPakingBoy extends ParkingBoy {
         super(parkingLot);
     }
 
-
-    public String getAvailableParkingLot(Car car) {
-        int maxAvilable = 0;
-        int parkingLotIndex = -1;
-        for (int i = 0; i < this.getParkingLots().size(); i++) {
-            if (this.getParkingLots().get(i).isParkingLotFull()) {
-                if (this.getParkingLots().get(i).availableCapacity()>maxAvilable){
-                    maxAvilable = this.getParkingLots().get(i).availableCapacity();
-                    parkingLotIndex = i;
-                }
-            }
+    @Override
+    public ParkingLot getAvailableParkingLot() {
+        ParkingLot parkingLot;
+        try {
+            parkingLot = this.getParkingLots().stream().filter(e -> e.isParkingLotFull())
+                    .sorted((firstLot,secendLot)->{
+                        return secendLot.availableCapacity() - firstLot.availableCapacity();
+                    }).findFirst().get();
+        } catch (Exception e) {
+            parkingLot = null;
         }
-        boolean isValid = parkingLotIndex != -1;
-        return isValid ? String.valueOf(parkingLotIndex) : "Not enough position.";
+        return parkingLot;
     }
 }
