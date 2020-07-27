@@ -7,6 +7,7 @@ public class ParkingBoy {
 
     private static final String NOT_ENOUGH_POSITION = "Not enough position.";
     private static final String UNRECOGNIZED_PARKING_TICKET = "Unrecognized parking ticket.";
+    public static final String NO_TICKET = "Please provide your parking ticket.";
     private List<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
 
     public ParkingBoy() {
@@ -48,7 +49,7 @@ public class ParkingBoy {
     }
 
     public String fetchCar() {
-        return "Please provide your parking ticket.";
+        return NO_TICKET;
     }
 
     public String attemptPark(Car car) {
