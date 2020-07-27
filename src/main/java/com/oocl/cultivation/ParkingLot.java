@@ -35,10 +35,6 @@ public class ParkingLot {
         return parkingCarList.remove(parkingCarTicket);
     }
 
-    public void setParkingCarList(Map<ParkingCarTicket, Car> parkingCarList) {
-        this.parkingCarList = parkingCarList;
-    }
-
     public boolean isParkingLotFull() {
         return parkingCarList.size() >= capacity;
     }
