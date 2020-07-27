@@ -27,9 +27,9 @@ public class ParkingBoy {
     }
 
     public ParkingCarTicket park(Car car) {
-        String attempt = getAvailableParkingLotIndex(car);
-        if (!attempt.equals(NOT_ENOUGH_POSITION) || car == null) {
-            return parkingLots.get(Integer.parseInt(attempt)).storeCar(car);
+        ParkingLot parkingLot  = getAvailableParkingLot();
+        if (parkingLot!=null || car != null) {
+            return parkingLot.storeCar(car);
         } else {
             return null;
         }
@@ -52,17 +52,14 @@ public class ParkingBoy {
         return NO_TICKET;
     }
 
-    public String getAvailableParkingLotIndex(Car car) {
-        int firstParkingLot = -1;
-        for (int i = 0; i < parkingLots.size(); i++) {
-            if (parkingLots.get(i).isParkingLotFull()) {
-                firstParkingLot = i;
-                break;
-            }
+    public ParkingLot getAvailableParkingLot() {
+        ParkingLot parkingLot;
+        try {
+            parkingLot = this.getParkingLots().stream().filter(e->e.isParkingLotFull()).findFirst().get();
+        }catch (Exception e){
+            parkingLot = null;
         }
-        boolean isValid = firstParkingLot != -1;
-        return isValid ? String.valueOf(firstParkingLot) : NOT_ENOUGH_POSITION;
-
+        return parkingLot;
     }
 
     public ParkingLot findParkingLot(ParkingCarTicket parkingCarTicket) {

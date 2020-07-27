@@ -11,8 +11,8 @@ public class SuperParkingBoy extends SmartPakingBoy{
         super(parkingLot);
     }
 
-    @Override
-    public String getAvailableParkingLotIndex(Car car) {
+
+    public String getAvailableParkingLot(Car car) {
         int maxAvilableRate = 0;
         int parkingLotIndex = -1;
         for (int i = 0; i < this.getParkingLots().size(); i++) {
