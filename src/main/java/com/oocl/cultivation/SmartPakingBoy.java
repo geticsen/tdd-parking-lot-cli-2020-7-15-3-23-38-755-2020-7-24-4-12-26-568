@@ -12,7 +12,6 @@ public class SmartPakingBoy extends ParkingBoy {
     }
 
     @Override
-    // rename
     public String attemptPark(Car car) {
         int maxAvilable = 0;
         int parkingLotIndex = -1;
