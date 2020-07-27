@@ -27,7 +27,7 @@ public class ParkingBoy {
     }
 
     public ParkingCarTicket park(Car car) {
-        String attempt = attemptPark(car);
+        String attempt = getAvailableParkingLotIndex(car);
         if (!attempt.equals(NOT_ENOUGH_POSITION) || car == null) {
             return parkingLots.get(Integer.parseInt(attempt)).storeCar(car);
         } else {
@@ -52,10 +52,10 @@ public class ParkingBoy {
         return NO_TICKET;
     }
 
-    public String attemptPark(Car car) {
+    public String getAvailableParkingLotIndex(Car car) {
         int firstParkingLot = -1;
         for (int i = 0; i < parkingLots.size(); i++) {
-            if (!parkingLots.get(i).isParkingLotFull()) {
+            if (parkingLots.get(i).isParkingLotFull()) {
                 firstParkingLot = i;
                 break;
             }

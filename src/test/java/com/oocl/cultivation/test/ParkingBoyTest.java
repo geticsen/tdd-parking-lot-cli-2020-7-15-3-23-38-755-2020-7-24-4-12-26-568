@@ -169,7 +169,7 @@ public class ParkingBoyTest {
         for (int i=0; i<10;i++){
             parkingBoy.park(car);
         }
-        wrongMessage = parkingBoy.attemptPark(car);
+        wrongMessage = parkingBoy.getAvailableParkingLotIndex(car);
         //then
         Assertions.assertEquals("Not enough position.", wrongMessage);
     }
