@@ -36,7 +36,7 @@ public class ParkingLot {
     }
 
     public boolean isParkingLotFull() {
-        return parkingCarList.size() >= capacity;
+        return parkingCarList.size() < capacity;
     }
     public boolean isCarInParkingLot(ParkingCarTicket parkingCarTicket){
         return parkingCarList.get(parkingCarTicket) != null;
