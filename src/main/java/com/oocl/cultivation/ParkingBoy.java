@@ -50,15 +50,15 @@ public class ParkingBoy {
     }
 
     public String attemptPark(Car car) {
-        int firstHaveCapacityParkingLot = -1;
+        int firstParkingLot = -1;
         for (int i = 0; i < parkingLots.size(); i++) {
             if (!parkingLots.get(i).isParkingLotFull()) {
-                firstHaveCapacityParkingLot = i;
+                firstParkingLot = i;
                 break;
             }
         }
-        boolean isValid = firstHaveCapacityParkingLot != -1;
-        return isValid ? String.valueOf(firstHaveCapacityParkingLot) : "Not enough position.";
+        boolean isValid = firstParkingLot != -1;
+        return isValid ? String.valueOf(firstParkingLot) : "Not enough position.";
 
     }
 
