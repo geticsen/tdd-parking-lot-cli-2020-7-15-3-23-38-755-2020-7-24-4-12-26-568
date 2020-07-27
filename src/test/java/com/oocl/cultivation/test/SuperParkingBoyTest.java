@@ -34,7 +34,7 @@ public class SuperParkingBoyTest extends SmartPakingBoyTest {
         //when
         SuperParkingBoy smartPakingBoy =new SuperParkingBoy(parkingLots);
         parkingCarTicket = smartPakingBoy.park(car);
-        ParkingLot parkingLot = smartPakingBoy.findParkingLotByParkingCarTicket(parkingCarTicket);
+        ParkingLot parkingLot = smartPakingBoy.findParkingLot(parkingCarTicket);
 
         //then
         Assertions.assertEquals(parkingLot1,parkingLot);

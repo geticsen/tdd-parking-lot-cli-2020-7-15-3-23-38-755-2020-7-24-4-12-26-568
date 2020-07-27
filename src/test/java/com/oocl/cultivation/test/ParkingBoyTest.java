@@ -38,7 +38,7 @@ public class ParkingBoyTest {
 
         //when
         ParkingCarTicket parkingCarTicket = parkingBoy.park(car);
-        fetchCar = parkingBoy.fetchCarByParkingTicket(parkingCarTicket);
+        fetchCar = parkingBoy.fetchCar(parkingCarTicket);
 
         //then
         Assertions.assertEquals(car, fetchCar);
@@ -58,7 +58,7 @@ public class ParkingBoyTest {
         ParkingCarTicket parkingCarTicket1 = parkingBoy.park(car1);
         ParkingCarTicket parkingCarTicket2 = parkingBoy.park(car2);
         ParkingCarTicket parkingCarTicket3 = parkingBoy.park(car3);
-        fetchCar = parkingBoy.fetchCarByParkingTicket(parkingCarTicket2);
+        fetchCar = parkingBoy.fetchCar(parkingCarTicket2);
 
         //then
         Assertions.assertEquals(car2, fetchCar);
@@ -80,8 +80,8 @@ public class ParkingBoyTest {
         ParkingCarTicket parkingCarTicket1 = parkingBoy.park(car1);
         ParkingCarTicket parkingCarTicket2 = parkingBoy.park(car2);
         ParkingCarTicket parkingCarTicket3 = parkingBoy.park(car3);
-        fetchCar1 = parkingBoy.fetchCarByParkingTicket(parkingCarTicket);
-        fetchCar2 = parkingBoy.fetchCarByParkingTicket(null);
+        fetchCar1 = parkingBoy.fetchCar(parkingCarTicket);
+        fetchCar2 = parkingBoy.fetchCar(null);
         //then
         Assertions.assertEquals(null, fetchCar1);
         Assertions.assertEquals(null, fetchCar2);
@@ -97,8 +97,8 @@ public class ParkingBoyTest {
         Car fetchCar, fetchCar0;
         //when
         parkingCarTicket = parkingBoy.park(car);
-        fetchCar0 = parkingBoy.fetchCarByParkingTicket(parkingCarTicket);
-        fetchCar = parkingBoy.fetchCarByParkingTicket(parkingCarTicket);
+        fetchCar0 = parkingBoy.fetchCar(parkingCarTicket);
+        fetchCar = parkingBoy.fetchCar(parkingCarTicket);
         //then
         Assertions.assertEquals(null, fetchCar);
     }
@@ -132,8 +132,8 @@ public class ParkingBoyTest {
         //when
 
         parkingCarTicket = parkingBoy.park(car);
-        fetchCar = parkingBoy.fetchCarByParkingTicket(parkingCarTicket);
-        fetchCar = parkingBoy.fetchCarByParkingTicket(parkingCarTicket);
+        fetchCar = parkingBoy.fetchCar(parkingCarTicket);
+        fetchCar = parkingBoy.fetchCar(parkingCarTicket);
         //then
         Assertions.assertEquals("Unrecognized parking ticket.", parkingCarTicket.getTicketMessage());
     }
@@ -150,7 +150,7 @@ public class ParkingBoyTest {
 
         //when
         parkingCarTicket = parkingBoy.park(car);
-        wrongMessage = parkingBoy.fetchCarByParkingTicket();
+        wrongMessage = parkingBoy.fetchCar();
 
         //then
         Assertions.assertEquals("Please provide your parking ticket.", wrongMessage);
@@ -187,7 +187,7 @@ public class ParkingBoyTest {
         }
         Car myCar = new Car();
         ParkingCarTicket parkingCarTicket = parkingBoy.park(myCar);
-        ParkingLot parkingLot = parkingBoy.findParkingLotByParkingCarTicket(parkingCarTicket);
+        ParkingLot parkingLot = parkingBoy.findParkingLot(parkingCarTicket);
         //then
         Assertions.assertEquals(parkingLots.get(1),parkingLot);
 

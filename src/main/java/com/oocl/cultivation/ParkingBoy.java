@@ -1,9 +1,7 @@
 package com.oocl.cultivation;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ParkingBoy {
 
@@ -35,7 +33,7 @@ public class ParkingBoy {
     }
 
     public Car fetchCar(ParkingCarTicket parkingCarTicket) {
-        ParkingLot parkingLot = findParkingLotByParkingCarTicket(parkingCarTicket);
+        ParkingLot parkingLot = findParkingLot(parkingCarTicket);
         Car car = null;
         if (parkingLot != null) {
             car = parkingLot.fethCar(parkingCarTicket);
@@ -64,7 +62,7 @@ public class ParkingBoy {
 
     }
 
-    public ParkingLot findParkingLotByParkingCarTicket(ParkingCarTicket parkingCarTicket) {
+    public ParkingLot findParkingLot(ParkingCarTicket parkingCarTicket) {
         for (ParkingLot parkingLot : parkingLots) {
             if (parkingLot.isCarInParkingLot(parkingCarTicket)) {
                 return parkingLot;
