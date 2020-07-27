@@ -6,6 +6,7 @@ import java.util.List;
 public class ParkingBoy {
 
     private static final String NOT_ENOUGH_POSITION = "Not enough position.";
+    private static final String UNRECOGNIZED_PARKING_TICKET = "Unrecognized parking ticket.";
     private List<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
 
     public ParkingBoy() {
@@ -40,7 +41,7 @@ public class ParkingBoy {
             car = parkingLot.fethCar(parkingCarTicket);
         } else {
             if (null != parkingCarTicket) {
-                parkingCarTicket.setTicketMessage("Unrecognized parking ticket.");
+                parkingCarTicket.setTicketMessage(UNRECOGNIZED_PARKING_TICKET);
             }
         }
         return car;
