@@ -5,6 +5,7 @@ import java.util.List;
 
 public class ParkingBoy {
 
+    private static final String NOT_ENOUGH_POSITION = "Not enough position.";
     private List<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
 
     public ParkingBoy() {
@@ -25,7 +26,7 @@ public class ParkingBoy {
 
     public ParkingCarTicket park(Car car) {
         String attempt = attemptPark(car);
-        if (!attempt.equals("Not enough position.") || car == null) {
+        if (!attempt.equals(NOT_ENOUGH_POSITION) || car == null) {
             return parkingLots.get(Integer.parseInt(attempt)).storeCar(car);
         } else {
             return null;
@@ -58,7 +59,7 @@ public class ParkingBoy {
             }
         }
         boolean isValid = firstParkingLot != -1;
-        return isValid ? String.valueOf(firstParkingLot) : "Not enough position.";
+        return isValid ? String.valueOf(firstParkingLot) : NOT_ENOUGH_POSITION;
 
     }
 
